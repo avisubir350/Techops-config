@@ -34,9 +34,10 @@ kind: Service
 metadata:
   name: mysql-service
 spec:
+  type: ClusterIP    # Change from None to ClusterIP (or just remove clusterIP: None)
   ports:
   - port: 3306
-  clusterIP: None
+    targetPort: 3306
   selector:
     app: mysql
 ---
