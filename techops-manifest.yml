@@ -41,10 +41,14 @@ spec:
   selector:
     app: mysql
 ---
+# ==========================================
+# 2. DATABASE LAYER (StatefulSet)
+# ==========================================
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
   name: mysql
+  namespace: techops  # Ensure this matches your other resources
 spec:
   serviceName: "mysql-service"
   replicas: 1
@@ -65,6 +69,10 @@ spec:
             secretKeyRef:
               name: mysql-secret
               key: mysql-root-password
+        # --- ADD THE NEW VARIABLE HERE ---
+        - name: MYSQL_DATABASE
+          value: "techops-manager"
+        # ---------------------------------
         ports:
         - containerPort: 3306
         volumeMounts:
