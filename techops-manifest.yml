@@ -103,7 +103,8 @@ spec:
         - containerPort: 8080
         env:
         - name: DB_HOST
-          value: "mysql-service"
+          # Use the full internal path so there is no confusion
+          value: "mysql-service.techops.svc.cluster.local"
         - name: DB_USER
           value: "root"
         - name: DB_PASSWORD
