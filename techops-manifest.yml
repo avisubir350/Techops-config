@@ -143,7 +143,7 @@ spec:
     spec:
       containers:
       - name: prometheus
-        image: avisubir/techops-manager-app:v1.0
+        image: prom/prometheus:latest
         args: ["--config.file=/etc/prometheus/prometheus.yml", "--storage.tsdb.path=/prometheus/"]
         ports: [{containerPort: 9090}]
         volumeMounts:
@@ -174,7 +174,7 @@ spec:
     spec:
       containers:
       - name: grafana
-        image: avisubir/techops-manager-app:v1.0
+        image: grafana/grafana:latest
         ports: [{containerPort: 3000}]
 ---
 apiVersion: v1
