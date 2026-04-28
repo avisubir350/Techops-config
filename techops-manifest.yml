@@ -101,6 +101,8 @@ spec:
         ports:
         - containerPort: 8080
         env:
+        - name: DB_HOST
+          value: "mysql-service"
         - name: DB_USER
           value: "root"
         - name: DB_PASSWORD
