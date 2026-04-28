@@ -1,10 +1,10 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: techops_manager-app
+  name: techops-manager-app
   namespace: argocd # This is where ArgoCD itself is installed
 spec:
-  project: techops_manager
+  project: techops-manager
   source:
     repoURL: https://github.com/avisubir350/techops_manager-config.git
     targetRevision: main
