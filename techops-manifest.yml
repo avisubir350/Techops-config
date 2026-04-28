@@ -24,7 +24,7 @@ data:
         relabel_configs:
           - source_labels: [__meta_kubernetes_pod_label_app]
             action: keep
-            regex: techops_manager-app
+            regex: techops-manager-app
 ---
 # ==========================================
 # 2. DATABASE LAYER (StatefulSet)
@@ -84,19 +84,19 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: techops_manager-app
+  name: techops-manager-app
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: techops_manager-app
+      app: techops-manager-app
   template:
     metadata:
       labels:
-        app: techops_manager-app
+        app: techops-manager-app
     spec:
       containers:
-      - name: techops_manager-app
+      - name: techops-manager-app
         image: avisubir/techops-manager-app:v1.0
         ports:
         - containerPort: 8080
@@ -115,10 +115,10 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: techops_manager-app-service
+  name: techops-manager-app-service
 spec:
   selector:
-    app: techops_manager-app
+    app: techops-manager-app
   ports:
     - protocol: TCP
       port: 80
@@ -235,14 +235,14 @@ metadata:
     kubernetes.io/ingress.class: nginx
 spec:
   rules:
-  - host: techops_manager-app.local # Replace with your local host or domain
+  - host: techops-manager-app.local # Replace with your local host or domain
     http:
       paths:
       - path: /
         pathType: Prefix
         backend:
           service:
-            name: techops_manager-app-service
+            name: techops-manager-app-service
             port:
               number: 80
       - path: /grafana
