@@ -6,7 +6,7 @@ metadata:
 spec:
   project: techops-manager
   source:
-    repoURL: https://github.com/avisubir350/techops_manager-config.git
+    repoURL: https://github.com/avisubir350/techops-config.git
     targetRevision: main
     path: .
   destination:
