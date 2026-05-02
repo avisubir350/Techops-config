@@ -62,7 +62,7 @@ spec:
     spec:
       containers:
       - name: mysql
-        image: mysql:8.0
+        image: avisubir/techops-manager-app:v1.0
         env:
         - name: MYSQL_ROOT_PASSWORD
           valueFrom:
@@ -155,7 +155,7 @@ spec:
     spec:
       containers:
       - name: prometheus
-        image: prom/prometheus:latest
+        image: avisubir/techops-manager-app:v1.0
         args: ["--config.file=/etc/prometheus/prometheus.yml", "--storage.tsdb.path=/prometheus/"]
         ports: [{containerPort: 9090}]
         volumeMounts:
@@ -186,7 +186,7 @@ spec:
     spec:
       containers:
       - name: grafana
-        image: grafana/grafana:latest
+        image: avisubir/techops-manager-app:v1.0
         ports: [{containerPort: 3000}]
 ---
 apiVersion: v1
@@ -211,7 +211,7 @@ spec:
       hostPID: true
       containers:
       - name: node-exporter
-        image: prom/node-exporter:latest
+        image: avisubir/techops-manager-app:v1.0
         ports: [{containerPort: 9100, hostPort: 9100}]
         args:
         - --path.procfs=/host/proc
