@@ -2,6 +2,28 @@
 # 1. CONFIGURATION & SECRETS
 # ==========================================
 apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: techops-app-data
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 2Gi
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: techops-app-logs
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+---
+apiVersion: v1
 kind: Secret
 metadata:
   name: mysql-secret
@@ -122,6 +144,18 @@ spec:
               key: mysql-root-password
         - name: DB_NAME
           value: "techops-manager"
+        volumeMounts:
+        - name: app-data
+          mountPath: /app/data
+        - name: app-logs
+          mountPath: /var/log/app
+      volumes:
+      - name: app-data
+        persistentVolumeClaim:
+          claimName: techops-app-data
+      - name: app-logs
+        persistentVolumeClaim:
+          claimName: techops-app-logs
         
 ---
 apiVersion: v1
