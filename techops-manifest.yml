@@ -128,7 +128,7 @@ spec:
     spec:
       containers:
       - name: techops-manager-app
-        image: avisubir/techops-manager-app:v1.1
+        image: avisubir/techops-manager-app:v1.0
         ports:
         - containerPort: 8080
         env:
